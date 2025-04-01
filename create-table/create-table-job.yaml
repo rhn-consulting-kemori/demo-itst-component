@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-table-job
+  namespace: demo-report
+  labels:
+    app: create-table-app
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: create-table-app
+          image: quay.io/rhn_consulting_kemori/create_table:latest
+          imagePullPolicy: Always
+          env:
+            - name: DB_USER
+              value: "test"
+            - name: DB_PASSWORD
+              value: "test"
+            - name: DB_SERVERNAME
+              value: "postgresql.demo-report.svc.cluster.local"
+            - name: DB_PORTNUMBER
+              value: "5432"
