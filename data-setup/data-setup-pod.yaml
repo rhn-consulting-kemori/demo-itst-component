@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: data-setup
+spec:
+  imagePullSecrets:
+    - name: quayio
+  containers:
+    - image: quay.io/rhn_consulting_kemori/data-setup
+      name: data-setup
+      ports:
+        - containerPort: 8090
+          protocol: TCP
+      volumeMounts:
+        - mountPath: /app/data
+          name: demo-example
+  volumes:
+    - name: demo-example
+      persistentVolumeClaim:
+claimName: my-strage-claim
