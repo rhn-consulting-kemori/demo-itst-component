@@ -3,18 +3,15 @@ kind: Pod
 metadata:
   name: data-setup
 spec:
+  containers:
+    - name: data-setup
+      image: quay.io/rhn_consulting_kemori/data-setup
+      volumeMounts:
+        - mountPath: "/app/data"
+          name: mypd
+  volumes:
+    - name: mypd
+      persistentVolumeClaim:
+        claimName: my-strage-claim
   imagePullSecrets:
     - name: quayio
-  containers:
-    - image: quay.io/rhn_consulting_kemori/data-setup
-      name: data-setup
-      ports:
-        - containerPort: 8090
-          protocol: TCP
-      volumeMounts:
-        - mountPath: /app/data
-          name: demo-example
-  volumes:
-    - name: demo-example
-      persistentVolumeClaim:
-claimName: my-strage-claim
