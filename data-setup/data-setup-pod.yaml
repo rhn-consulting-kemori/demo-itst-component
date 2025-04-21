@@ -12,6 +12,6 @@ spec:
   volumes:
     - name: mypd
       persistentVolumeClaim:
-        claimName: my-strage-claim
+        claimName: demo-strage-claim
   imagePullSecrets:
     - name: quayio
