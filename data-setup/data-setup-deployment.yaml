@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: demo-itst
+  name: data-setup
+  labels:
+    app: data-setup
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data-setup
+  template:
+    metadata:
+      labels:
+        app: data-setup
+    spec:
+      containers:
+        - name: data-setup
+          image: quay.io/rhn_consulting_kemori/data-setup
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 8090
+              protocol: TCP
+      imagePullSecrets:
+        - name: quayio
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: data-setup
+  namespace: demo-itst
+  labels:
+    app: data-setup
+spec:
+  type: ClusterIP
+  ports:
+    - name: 8090-tcp
+      protocol: TCP
+      port: 8090
+      targetPort: 8090
+  sessionAffinity: None
+  selector:
+    app: data-setup
+status:
+  loadBalancer: {}
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: data-setup
+  namespace: demo-itst
+  labels:
+    app: data-setup
+spec:
+  host: data-setup-demo-itst.apps.rosa.rosa-nsdsm.9et7.p3.openshiftapps.com
+  to:
+    kind: Service
+    name: data-setup
+    weight: 100
+  port:
+    targetPort: 8090-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
