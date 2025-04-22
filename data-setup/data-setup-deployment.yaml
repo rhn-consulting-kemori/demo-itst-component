@@ -23,8 +23,8 @@ spec:
             - containerPort: 8090
               protocol: TCP
           volumeMounts:
-            - mountPath: "/app/data"
-              name: mypd
+            - name: mypd
+              mountPath: /app/data
       volumes:
         - name: mypd
           persistentVolumeClaim:
