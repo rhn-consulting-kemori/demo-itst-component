@@ -23,12 +23,12 @@ spec:
             - containerPort: 8090
               protocol: TCP
           volumeMounts:
-            - name: mypd
-              mountPath: /app/data
+            - name: data-setup-vol
+              mountPath: /mnt/data
       volumes:
-        - name: mypd
+        - name: data-setup-vol
           persistentVolumeClaim:
-            claimName: demo-strage-claim
+            claimName: demo-efs-pvc1
       imagePullSecrets:
         - name: quayio
 ---
