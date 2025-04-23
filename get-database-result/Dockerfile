@@ -19,4 +19,9 @@ ENV INPUT_FILE_NAME=assert-actual-002-test_task_run.sql
 ENV OUTPUT_FILE_PATH=./
 ENV OUTPUT_FILE_NAME=assert-actual-002-test_task_run.csv
 
+# File Write Grant
+USER root
+RUN chgrp -R 0 /mnt/data && chmod -R g=u /mnt/data
+USER 1001
+
 CMD ["python", "app.py"]
