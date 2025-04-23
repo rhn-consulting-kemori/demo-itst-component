@@ -21,6 +21,7 @@ ENV OUTPUT_FILE_NAME=assert-actual-002-test_task_run.csv
 
 # File Write Grant
 USER root
+RUN mkdir -p /mnt/data
 RUN chgrp -R 0 /mnt/data && chmod -R g=u /mnt/data
 USER 1001
 
