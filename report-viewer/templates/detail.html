@@ -51,7 +51,7 @@
         <td>{{ test_task_run.test_result }}</td>
         <td>
           {% if test_task_run.evidence_link != '-' %}
-            <a href="{{ test_task_run.evidence_link }}">参照</a>
+            <input type="button" value="参照" onclick="location.href = '{{ test_task_run.evidence_link }}';">
           {% endif %}
         </td>
       </tr>
