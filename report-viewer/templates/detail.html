@@ -50,7 +50,7 @@
         <td>{{ test_task_run.end_time }}</td>
         <td>{{ test_task_run.test_result }}</td>
         <td>
-          {% if not test_task_run.evidence_link %}
+          {% if test_task_run.evidence_link != '-' %}
             <a href="{{ test_task_run.evidence_link }}">参照</a>
           {% endif %}
         </td>
