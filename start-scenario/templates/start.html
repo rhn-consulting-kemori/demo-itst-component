@@ -24,14 +24,12 @@
 <h2>シナリオテスト</h2>
 
 <div class="list">
-  <h3>シナリオテスト開始</h3>
-  <form action="/start" method="post">
-    <table class="ta1">
-      <tr>
-        <td><pre>テストID  <input type="text" id="test_id" name="test_id" />  <input type="submit" value="開始"></pre></td>
-      </tr>
-    </table>
-  </form>
+  <h3>シナリオテスト実行</h3>
+  <table class="ta1">
+    <tr><th>テストID</th><th>開始結果</th></tr>
+    <tr><td>{{ test_id }}</td><td>{{ start_result }}</td></tr>
+    </tr>
+  </table>
 </div>
 
 <div class="list">
@@ -47,7 +45,7 @@
 
 </section>
 <!--/#category-->
-
+<p class="centered-text"><input type="button" value="戻る" onclick="location.href = '/';"></p>
 </div>
 <!--/#contents-->
 
