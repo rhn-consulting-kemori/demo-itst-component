@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!--CSSファイルの読み込み-->
+<link href="/static/css/main.css" rel="stylesheet">
+
+<!--jQueryファイルの読み込み-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<base target="_top">
+<title>Start Scenario</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Start Scenario">
+</head>
+
+<body>
+
+<div id="container">
+<div id="contents">
+<section id="category">
+
+<h2>シナリオテスト</h2>
+
+<div class="list">
+  <h3>シナリオテスト開始</h3>
+  <form action="/start">
+    <table class="ta1">
+      <tr>
+        <td><pre>テストID  <input type="text" id="test_id" name="test_id" />  <input type="submit" value="開始"></pre></td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+<div class="list">
+  <h3>テスト結果確認</h3>
+  <table class="ta1">
+    <tr>
+      <td>テスト結果一覧</td>
+      <td>Ansible Automation Platform Controller</td>
+      <td>OpenShift Console</td>
+    </tr>
+  </table>
+</div>
+
+</section>
+<!--/#category-->
+
+</div>
+<!--/#contents-->
+
+</div>
+<!--/#container-->
+
+<footer>
+  <p>Demo from Red Hat</p>
+</footer>
+
+</body>
+</html>
